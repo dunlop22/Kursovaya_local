@@ -4,6 +4,7 @@
 #include <string>
 #include <windows.h>
 #include "Menu.h"
+
 #include "File_O.h"
 #include "Kinoteatr.h"
 #include <conio.h>
@@ -47,7 +48,7 @@ int main()
 	/// ДОБАВИТЬ ДЛЯ ВСЕХ РЕЖИМОВ ВОЗМОЖНОСТЬ СМЕНЫ ТЕКСТОВИКА С БАЗОЙ
 	/// 
 	/// 
-
+	
 	Menu.User_kassir();
 	Menu.Input_number();
 	do
@@ -55,6 +56,14 @@ int main()
 		if (Menu.menu_number == 1)
 		{
 			Menu.Spisok_kino(kinoteatr);
+			cout << "\n\nВыберите фильм (введите номер) ";
+			Menu.item_num = kinoteatr.kol_vo_filmov;
+			Menu.Input_number();
+			if (Menu.menu_number != 0)	//переход к описанию фильма
+			{
+				Menu.Opisanie(kinoteatr);
+				_getch();
+			}
 		}
 	} while (Menu.menu_number != 0);
 }

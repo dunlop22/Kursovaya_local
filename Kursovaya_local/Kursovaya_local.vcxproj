@@ -143,11 +143,13 @@
     <ClCompile Include="Kinoteatr.cpp" />
     <ClCompile Include="Kursovaya_local.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Universal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File_O.h" />
     <ClInclude Include="Kinoteatr.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Universal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

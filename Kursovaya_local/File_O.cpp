@@ -128,8 +128,8 @@ void File_O::File_read(string path, Kinoteatr *kinoteatr)
         for (j = 0; j < 9; j++)
         {
             getline(file, temp);
-            getline(file, ((*kinoteatr).filmi[i].time[j]));
             getline(file, ((*kinoteatr).filmi[i].price[j]));
+            getline(file, ((*kinoteatr).filmi[i].time[j]));
             for (int k = 0; k < 10; k++)
             {
                 getline(file, temp);

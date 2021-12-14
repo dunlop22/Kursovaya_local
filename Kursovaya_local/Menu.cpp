@@ -3,6 +3,8 @@
 #include <iostream>
 #include <conio.h>
 #include "Kinoteatr.h"
+
+
 using namespace std;
 
 /*Menu::Menu()
@@ -34,7 +36,8 @@ void Menu::Start_menu()
 
 void Menu::User_kassir()
 {
-	cout << "name_kinofeatre";
+	system("cls");
+	cout << "********name_kinofeatre!!!*******\n\n";
 	cout << "1) Просмотр списка фильмов\n2) Вход в режим администратора\n\nESC - Выход";
 	item_num = 2;
 }
@@ -63,12 +66,66 @@ void Menu::Input_number()
 
 void Menu::Spisok_kino(Kinoteatr kinoteatr)
 {
+	system("cls");
+	cout << "********name_kinofeatre!!!*******\n\n";
+	cout << "0) Возврат в меню\n\n";
 	cout << "Список фильмов:\n\n";
 	for (int i = 0; i < kinoteatr.kol_vo_filmov; i++)
 	{
 		cout << i + 1 << ") " << kinoteatr.filmi[i].name << " (" << kinoteatr.filmi[i].age << ")\n";
 	}
-	_getch();
+}
+
+
+
+void Menu::Opisanie(Kinoteatr kinoteatr)
+{
+	
+	const time_t tm = time(nullptr);
+
+	char buf[64];
+	strftime(buf, std::size(buf), "%d.%m.%Y", localtime(&tm));
+	std::cout << buf << std::endl;
+			
+
+	std::time_t t = std::time(0);   // get time now
+	std::tm* now = std::localtime(&t);
+	std::cout << (now->tm_year + 1900) << '-' << (now->tm_mon + 1) << '-' << now->tm_mday << "\n";
+	
+	
+
+	system("cls");
+
+	
+	
+	/*
+	cout << "yesterday : " << convTime(yesterday) << endl;
+	cout << "present   : " << convTime(present) << endl;
+	cout << "tommorow  : " << convTime(tommorow) << endl;
+	*/
+	Universal uni;
+
+	
+	
+	cout << "\n\nНазвание: " << kinoteatr.filmi[menu_number - 1].name;
+	cout << "\n\nОписание: " << kinoteatr.filmi[menu_number - 1].short_description;
+	cout << "\n\nПродолжительность: " << kinoteatr.filmi[menu_number - 1].duration;
+	cout << "\n\nРежиссер(-ы): " << kinoteatr.filmi[menu_number - 1].rejisser;
+	cout << "\n\nВ главных ролях: " << kinoteatr.filmi[menu_number - 1].main_role;
+	cout << "\n\nРасписание сеансов:";
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "\n\n" << uni.date_ret(i) << "   Время   Цена билета";
+
+		for (int j = 0; j < 3; j++)
+		{
+			
+			cout << "\n                " << kinoteatr.filmi[menu_number - 1].time[3 * i + j] << "    " << kinoteatr.filmi[menu_number - 1].price[3 * i + j] << " руб.";
+		}
+	}
+
+
+	
 }
 
 void Menu::File_choice(int k)
