@@ -111,11 +111,11 @@ void File_O::File_read(string path, Kinoteatr *kinoteatr)
 
     //разложение количества кассиров на массив ???
 
-    getline(file, temp);
 
     //заполнение информации о фильмах
     do
     {
+        getline(file, temp);
         getline(file, (*kinoteatr).filmi[i].name);
         getline(file, (*kinoteatr).filmi[i].duration);
         getline(file, (*kinoteatr).filmi[i].age);
@@ -123,10 +123,11 @@ void File_O::File_read(string path, Kinoteatr *kinoteatr)
         getline(file, (*kinoteatr).filmi[i].main_role);
         getline(file, (*kinoteatr).filmi[i].rejisser);
 
-        getline(file, temp);
+        
 
         for (j = 0; j < 9; j++)
         {
+            getline(file, temp);
             getline(file, ((*kinoteatr).filmi[i].time[j]));
             getline(file, ((*kinoteatr).filmi[i].price[j]));
             for (int k = 0; k < 10; k++)
@@ -134,9 +135,8 @@ void File_O::File_read(string path, Kinoteatr *kinoteatr)
                 getline(file, temp);
                 (*kinoteatr).filmi[i].mesta[j] = (*kinoteatr).filmi[i].mesta[j] + temp;
             }
-            getline(file, temp);
         }
-        getline(file, temp);
+        //getline(file, temp);
         i++;
     } while (i < (*kinoteatr).kol_vo_filmov);
 

@@ -24,6 +24,7 @@ int main()
         Menu.Input_number();
 		if (Menu.menu_number == 2)	//ввод своего имени файла с кинотеатром
 		{
+			system("cls");
 			file_stream.File_input();
 		}
 
@@ -41,5 +42,20 @@ int main()
 		//cout << kinoteatr.filmi[0].name;
 		//_getch();
 	} while (file_stream.File_check(file_stream.path) != 1);
+
+	/// 
+	/// ДОБАВИТЬ ДЛЯ ВСЕХ РЕЖИМОВ ВОЗМОЖНОСТЬ СМЕНЫ ТЕКСТОВИКА С БАЗОЙ
+	/// 
+	/// 
+
+	Menu.User_kassir();
+	Menu.Input_number();
+	do
+	{
+		if (Menu.menu_number == 1)
+		{
+			Menu.Spisok_kino(kinoteatr);
+		}
+	} while (Menu.menu_number != 0);
 }
 
