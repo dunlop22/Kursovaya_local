@@ -76,13 +76,13 @@ int File_O::File_check(string path)
 
     f1.open(path);
     if (!(f1.is_open())) {
-        cout << "Файл не найден";
+        //cout << "Файл не найден"; //тест
         return 2;
         //создание файла, заполнение всех данных
 
     }
     else {
-        cout << "Файл найден!";
+        //cout << "Файл найден!"; //тест
         return 1;
     }
 
@@ -94,7 +94,7 @@ int File_O::File_check(string path)
 
 
 
-void File_O::File_read(string path, Kinoteatr kinoteatr)
+void File_O::File_read(string path, Kinoteatr *kinoteatr)
 {
     ifstream file(path);
 
@@ -104,9 +104,9 @@ void File_O::File_read(string path, Kinoteatr kinoteatr)
     string temp;
 
     //заполнение информации о кинотеатре
-    getline(file, kinoteatr.name);    //чтение названия кинотеатра
-    getline(file, kinoteatr.adress);    //чтение адреса кинотеатра
-    getline(file, kinoteatr.kassirs[0]);     //чтения ФИО кассиров
+    getline(file, (*kinoteatr).name);    //чтение названия кинотеатра
+    getline(file, (*kinoteatr).adress);    //чтение адреса кинотеатра
+    getline(file, (*kinoteatr).kassirs[0]);     //чтения ФИО кассиров
 
 
     //разложение количества кассиров на массив ???
@@ -116,35 +116,35 @@ void File_O::File_read(string path, Kinoteatr kinoteatr)
     //заполнение информации о фильмах
     do
     {
-        getline(file, kinoteatr.filmi[i].name);
-        getline(file, kinoteatr.filmi[i].duration);
-        getline(file, kinoteatr.filmi[i].age);
-        getline(file, kinoteatr.filmi[i].short_description);
-        getline(file, kinoteatr.filmi[i].main_role);
-        getline(file, kinoteatr.filmi[i].rejisser);
+        getline(file, (*kinoteatr).filmi[i].name);
+        getline(file, (*kinoteatr).filmi[i].duration);
+        getline(file, (*kinoteatr).filmi[i].age);
+        getline(file, (*kinoteatr).filmi[i].short_description);
+        getline(file, (*kinoteatr).filmi[i].main_role);
+        getline(file, (*kinoteatr).filmi[i].rejisser);
 
         getline(file, temp);
 
         for (j = 0; j < 9; j++)
         {
-            getline(file, (kinoteatr.filmi[i].time[j]));
-            getline(file, (kinoteatr.filmi[i].price[j]));
+            getline(file, ((*kinoteatr).filmi[i].time[j]));
+            getline(file, ((*kinoteatr).filmi[i].price[j]));
             for (int k = 0; k < 10; k++)
             {
                 getline(file, temp);
-                kinoteatr.filmi[i].mesta[j] = kinoteatr.filmi[i].mesta[j] + temp;
+                (*kinoteatr).filmi[i].mesta[j] = (*kinoteatr).filmi[i].mesta[j] + temp;
             }
             getline(file, temp);
         }
         getline(file, temp);
         i++;
-    } while (i < kinoteatr.kol_vo_filmov);
+    } while (i < (*kinoteatr).kol_vo_filmov);
 
     //cout << filmi[0].duration;        //тест
 
 }
 
-int File_O::File_check_compound(string path, int kol_vo)        //проверка форматирования текстового файла
+int File_O::File_check_compound(string path, int *kol_vo)        //проверка форматирования текстового файла
 {
     char* str = new char[1024];
     int i = 0;
@@ -159,7 +159,7 @@ int File_O::File_check_compound(string path, int kol_vo)        //проверка форма
     if ((i - 3) % 124 == 0)            //форматирование верно
     {
         //kol_vo_filmov = (i - 4) / 123;
-        kol_vo = (i - 4) / 123;
+        *kol_vo = (i - 3) / 124;
         return 1;
 
     }

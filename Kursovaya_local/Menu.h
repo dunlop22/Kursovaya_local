@@ -1,4 +1,5 @@
 #pragma once
+#include "Kinoteatr.h"
 class Menu
 {
 public:
