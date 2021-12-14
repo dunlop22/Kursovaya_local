@@ -30,8 +30,8 @@ public:
 	film filmi[10];
 
 
-	void new_name();	//Ввод название кинотеатра
-	void new_kassir();	//ввод ФИО кассира
+	void New_name();	//Ввод название кинотеатра
+	void New_kassir();	//ввод ФИО кассира
 
 };
 

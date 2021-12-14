@@ -12,14 +12,9 @@ public:
 	//~Menu();
 	//void print();
 
-	void user_kassir();
-	void start_menu();
-	void input_number();
-	void file_choice(int k);
-	void spisok_kino(Kinoteatr kinoteatr);
+	void User_kassir();
+	void Start_menu();
+	void Input_number();
+	void File_choice(int k);
+	void Spisok_kino(Kinoteatr kinoteatr);
 };
-
-class Menu
-{
-};
-

@@ -9,7 +9,7 @@ using namespace std;
 #include <cstdio>
 
 
-void File_O::file_input()
+void File_O::File_input()
 {
     do
     {
@@ -23,7 +23,7 @@ void File_O::file_input()
         {
             return;
         }
-    } while (file_check(path) != 1);
+    } while (File_check(path) != 1);
     _getch();
 }
 
@@ -70,7 +70,7 @@ void File_O::file_new()
 }
 */
 
-int File_O::file_check(string path)
+int File_O::File_check(string path)
 {
     ifstream f1;
 
@@ -94,7 +94,7 @@ int File_O::file_check(string path)
 
 
 
-void File_O::file_read(string path, Kinoteatr kinoteatr)
+void File_O::File_read(string path, Kinoteatr kinoteatr)
 {
     ifstream file(path);
 
@@ -144,7 +144,7 @@ void File_O::file_read(string path, Kinoteatr kinoteatr)
 
 }
 
-int File_O::file_check_compound(string path, int kol_vo)        //проверка форматировани€ текстового файла
+int File_O::File_check_compound(string path, int kol_vo)        //проверка форматировани€ текстового файла
 {
     char* str = new char[1024];
     int i = 0;

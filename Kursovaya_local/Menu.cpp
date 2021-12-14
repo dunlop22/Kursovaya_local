@@ -2,7 +2,7 @@
 #include "Menu.h"
 #include <iostream>
 #include <conio.h>
-
+#include "Kinoteatr.h"
 using namespace std;
 
 /*Menu::Menu()
@@ -25,14 +25,14 @@ void Menu::print()
 }
 */
 
-void Menu::start_menu()
+void Menu::Start_menu()
 {
 	system("cls");
 	cout << "Для просмотра списка фильмов нажмите '1'.\nДля входа в режим администратора нажмите '2'.\nДля выхода нажмите 'esc'.\n\n";
 	item_num = 2;
 }
 
-void Menu::user_kassir()
+void Menu::User_kassir()
 {
 	cout << "name_kinofeatre";
 	cout << "1) Просмотр списка фильмов\n2) Вход в режим администратора\n\nESC - Выход";
@@ -40,7 +40,7 @@ void Menu::user_kassir()
 }
 
 
-void Menu::input_number()
+void Menu::Input_number()
 {
 	do
 	{
@@ -61,7 +61,7 @@ void Menu::input_number()
 	} while (menu_number < 0 || menu_number > item_num);
 }
 
-void Menu::spisok_kino(Kinoteatr kinoteatr)
+void Menu::Spisok_kino(Kinoteatr kinoteatr)
 {
 	cout << "Список фильмов:\n\n";
 	for (int i = 0; i < kinoteatr.kol_vo_filmov; i++)
@@ -71,7 +71,7 @@ void Menu::spisok_kino(Kinoteatr kinoteatr)
 	_getch();
 }
 
-void Menu::file_choice(int k)
+void Menu::File_choice(int k)
 {
 	cout << "1) Открыть файл по умолчанию в домашнем каталоге (\"kino_v_teatre\")\n2) Открыть файл по заданному пути";
 	if (k == 1)

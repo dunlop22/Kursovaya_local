@@ -1,6 +1,6 @@
 #include "Kinoteatr.h"
 
-void Kinoteatr::new_name()
+void Kinoteatr::New_name()
 {
 	do
 	{
@@ -9,7 +9,7 @@ void Kinoteatr::new_name()
 	} while (name == "");
 }
 
-void Kinoteatr::new_kassir()
+void Kinoteatr::New_kassir()
 {
 	string FIO;
 
