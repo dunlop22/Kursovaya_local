@@ -55,13 +55,22 @@ int main()
 	{
 		if (Menu.menu_number == 1)
 		{
-			Menu.Spisok_kino(kinoteatr);
-			cout << "\n\nВыберите фильм (введите номер) ";
-			Menu.item_num = kinoteatr.kol_vo_filmov;
+			Menu.Spisok_kino(kinoteatr);	//Выбор фильма для посещения
 			Menu.Input_number();
+			Menu.num_film = Menu.menu_number;
+			Menu.num_day = -1;
 			if (Menu.menu_number != 0)	//переход к описанию фильма
 			{
-				Menu.Opisanie(kinoteatr);
+				Menu.num_time = -1;
+				Menu.Opisanie(kinoteatr);	//ввод даты посещения
+				Menu.Input_number();
+				Menu.num_day = Menu.menu_number;	//день на покупку/бронь билета
+				
+				Menu.Opisanie(kinoteatr);	//ввод времени посещения
+				Menu.Input_number();
+				Menu.num_time = Menu.menu_number;
+
+				Menu.Opisanie(kinoteatr);	//вывод мест в кинотеатре
 				_getch();
 			}
 		}

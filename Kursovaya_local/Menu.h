@@ -20,6 +20,9 @@ class Menu
 public:
 	int item_num;
 	int menu_number;
+	int num_day;	//номер дня при покупке билета
+	int num_film;	//номер выбранного фильма
+	int num_time;
 	//char menu_text[512];
 
 public:

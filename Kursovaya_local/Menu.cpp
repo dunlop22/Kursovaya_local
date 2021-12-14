@@ -74,6 +74,8 @@ void Menu::Spisok_kino(Kinoteatr kinoteatr)
 	{
 		cout << i + 1 << ") " << kinoteatr.filmi[i].name << " (" << kinoteatr.filmi[i].age << ")\n";
 	}
+	cout << "\n\nВыберите фильм (введите номер) ";
+	item_num = kinoteatr.kol_vo_filmov;
 }
 
 
@@ -112,20 +114,79 @@ void Menu::Opisanie(Kinoteatr kinoteatr)
 	cout << "\n\nПродолжительность: " << kinoteatr.filmi[menu_number - 1].duration;
 	cout << "\n\nРежиссер(-ы): " << kinoteatr.filmi[menu_number - 1].rejisser;
 	cout << "\n\nВ главных ролях: " << kinoteatr.filmi[menu_number - 1].main_role;
-	cout << "\n\nРасписание сеансов:";
-	for (int i = 0; i < 3; i++)
+	
+	
+	int k;
+	int n;
+	if (num_time < 0)
 	{
-		cout << "\n\n" << uni.date_ret(i) << "   Время   Цена билета";
-
-		for (int j = 0; j < 3; j++)
+		cout << "\n\nРасписание сеансов:";
+		if (num_day < 0)
 		{
-			
-			cout << "\n                " << kinoteatr.filmi[menu_number - 1].time[3 * i + j] << "    " << kinoteatr.filmi[menu_number - 1].price[3 * i + j] << " руб.";
+			k = 0;
+			n = 3;
+		}
+		else
+		{
+			k = num_day - 1;
+			n = num_day;
+		}
+
+		for (int i = k; i < n; i++)
+		{
+			cout << "\n\n" << uni.date_ret(i) << "   Время   Цена билета";
+
+			for (int j = 0; j < 3; j++)
+			{
+
+				cout << "\n                " << kinoteatr.filmi[num_film - 1].time[3 * i + j] << "    " << kinoteatr.filmi[num_film - 1].price[3 * i + j] << " руб.";
+			}
+		}
+
+		if (num_day < 0)
+		{
+
+			cout << "\n\n1) " << uni.date_ret(0) << "\n2) " << uni.date_ret(1) << "\n3) " << uni.date_ret(2) << "\n\nВыберите дату: ";
+		}
+		else
+		{
+			cout << "\n\n";
+			for (int i = 0; i < 3; i++)
+			{
+				cout << "\n" << (i + 1) << ") " << kinoteatr.filmi[(num_film - 1)].time[(num_day - 1) * 3 + i];
+			}
+			cout << "\n\nВыберите время: ";
+		}
+		item_num = 3;
+	}
+	else
+	{
+		/*if (kinoteatr.filmi[(num_film - 1)].rand[(num_day - 1) * +(num_time - 1)] == "0\0")
+		{
+			kinoteatr.New_zal(num_film, num_day, num_time);
+		}*/
+		cout << kinoteatr.filmi[num_film - 1].mesta[(num_day - 1) * 3 + (num_time - 1)];	//тест
+		cout << "\n\n A B C D E F G H I J";
+		for (int i = 0; i < 10; i++)
+		{
+			cout << "\n" << (i + 1) << "  ";
+			for (int j = 0; j < 10; j++)
+			{
+				if (kinoteatr.filmi[(num_film - 1)].mesta[(num_day - 1) * +(num_time - 1)][i * 10 + j] != '0')	//место свободно
+				{
+					cout << "- ";
+				}
+				else if (kinoteatr.filmi[(num_film - 1)].mesta[(num_day - 1) * +(num_time - 1)][i * 10 + j] == '1')	//место забронировано
+				{
+					cout << "? ";
+				}
+				else if (kinoteatr.filmi[(num_film - 1)].mesta[(num_day - 1) * +(num_time - 1)][i * 10 + j] == '2')	//место выкуплено
+				{
+					cout << "X ";
+				}
+			}
 		}
 	}
-
-
-	
 }
 
 void Menu::File_choice(int k)

@@ -26,12 +26,13 @@ public:
 		string price[9];	//стоимость билета
 		string time[9];	//время сеанса
 		string mesta[9];	//места в зале
+		string rand[9];
 	};
 	film filmi[10];
 
 
 	void New_name();	//Ввод название кинотеатра
 	void New_kassir();	//ввод ФИО кассира
-
+	string New_zal(int number_film, int number);		//генерация заполненности зала
 };
 

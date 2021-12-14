@@ -122,7 +122,7 @@ void File_O::File_read(string path, Kinoteatr *kinoteatr)
         getline(file, (*kinoteatr).filmi[i].short_description);
         getline(file, (*kinoteatr).filmi[i].main_role);
         getline(file, (*kinoteatr).filmi[i].rejisser);
-
+        
         
 
         for (j = 0; j < 9; j++)
@@ -130,11 +130,19 @@ void File_O::File_read(string path, Kinoteatr *kinoteatr)
             getline(file, temp);
             getline(file, ((*kinoteatr).filmi[i].price[j]));
             getline(file, ((*kinoteatr).filmi[i].time[j]));
+            getline(file, (*kinoteatr).filmi[i].rand[j]);
+            //(*kinoteatr).filmi[i].rand[j] = (*kinoteatr).filmi[i].rand[j][0] + "\0";
+            
             for (int k = 0; k < 10; k++)
             {
                 getline(file, temp);
                 (*kinoteatr).filmi[i].mesta[j] = (*kinoteatr).filmi[i].mesta[j] + temp;
             }
+            if (kinoteatr->filmi[i].rand[j][0] == '0')
+            {
+                (*kinoteatr).filmi[i].mesta[j] = kinoteatr->New_zal(i, j);
+            }
+            //_getch();   //тест
         }
         //getline(file, temp);
         i++;
@@ -156,10 +164,9 @@ int File_O::File_check_compound(string path, int *kol_vo)        //проверка форм
     }
     base.close();
     delete str;
-    if ((i - 3) % 124 == 0)            //форматирование верно
+    if ((i - 3) % 133 == 0)            //форматирование верно
     {
-        //kol_vo_filmov = (i - 4) / 123;
-        *kol_vo = (i - 3) / 124;
+        *kol_vo = (i - 3) / 133;
         return 1;
 
     }
