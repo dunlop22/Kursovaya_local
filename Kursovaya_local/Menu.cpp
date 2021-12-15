@@ -161,18 +161,14 @@ void Menu::Opisanie(Kinoteatr kinoteatr)
 	}
 	else
 	{
-		/*if (kinoteatr.filmi[(num_film - 1)].rand[(num_day - 1) * +(num_time - 1)] == "0\0")
-		{
-			kinoteatr.New_zal(num_film, num_day, num_time);
-		}*/
-		cout << kinoteatr.filmi[num_film - 1].mesta[(num_day - 1) * 3 + (num_time - 1)];	//тест
+		//cout << kinoteatr.filmi[num_film - 1].mesta[(num_day - 1) * 3 + (num_time - 1)];	//тест
 		cout << "\n\n A B C D E F G H I J";
 		for (int i = 0; i < 10; i++)
 		{
 			cout << "\n" << (i + 1) << "  ";
 			for (int j = 0; j < 10; j++)
 			{
-				if (kinoteatr.filmi[(num_film - 1)].mesta[(num_day - 1) * +(num_time - 1)][i * 10 + j] != '0')	//место свободно
+				if (kinoteatr.filmi[(num_film - 1)].mesta[(num_day - 1) * +(num_time - 1)][i * 10 + j] == '0')	//место свободно
 				{
 					cout << "- ";
 				}
@@ -186,6 +182,7 @@ void Menu::Opisanie(Kinoteatr kinoteatr)
 				}
 			}
 		}
+		cout << "\n\nВведите место: ";
 	}
 }
 

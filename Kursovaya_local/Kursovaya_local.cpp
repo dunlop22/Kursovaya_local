@@ -30,19 +30,19 @@ int main()
 		}
 
 		file_stream.path = "kino_v_teatre.txt\0";
-		if (file_stream.File_check(file_stream.path))	//проверка на существование файла с таким названием
+		if (file_stream.File_check())	//проверка на существование файла с таким названием
 		{
-			if (file_stream.File_check_compound(file_stream.path, &kinoteatr.kol_vo_filmov) == 1)		//проверка файла на внутренее форматирование
+			if (file_stream.File_check_compound(&kinoteatr.kol_vo_filmov) == 1)		//проверка файла на внутренее форматирование
 			{
 				//cout << kinoteatr.kol_vo_filmov;	//тест
 				//cout << "Проверку прошел!";	//тест
-				file_stream.File_read(file_stream.path, &kinoteatr);	//чтение фильмов в массивчик
+				file_stream.File_read(&kinoteatr);	//чтение фильмов в массивчик
 			}
 		}
 		//_getch();	//тест
 		//cout << kinoteatr.filmi[0].name;
 		//_getch();
-	} while (file_stream.File_check(file_stream.path) != 1);
+	} while (file_stream.File_check() != 1);
 
 	/// 
 	/// ДОБАВИТЬ ДЛЯ ВСЕХ РЕЖИМОВ ВОЗМОЖНОСТЬ СМЕНЫ ТЕКСТОВИКА С БАЗОЙ
@@ -71,6 +71,10 @@ int main()
 				Menu.num_time = Menu.menu_number;
 
 				Menu.Opisanie(kinoteatr);	//вывод мест в кинотеатре
+				///
+				///обработка введеного места
+				///
+				/// 
 				_getch();
 			}
 		}
