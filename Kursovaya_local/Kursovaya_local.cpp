@@ -49,10 +49,12 @@ int main()
 	/// 
 	/// 
 	
-	Menu.User_kassir();
-	Menu.Input_number();
+	
 	do
 	{
+		Menu.User_kassir();
+		Menu.Input_number();
+		
 		if (Menu.menu_number == 1)
 		{
 			Menu.Spisok_kino(kinoteatr);	//Выбор фильма для посещения
@@ -76,6 +78,27 @@ int main()
 				///
 				/// 
 				_getch();
+			}
+		}
+		else if (Menu.menu_number == 2)
+		{
+			//ввод пароля на режим администратора
+			
+			if (Menu.Input_password() == 1)
+			{
+				//загрузка окна администратора
+				Menu.Administrator();
+				Menu.Input_number();
+				if (Menu.menu_number == 1)
+				{
+					Menu.Edit_cinema();
+					Menu.Input_number();
+					if (Menu.menu_number == 1)
+					{
+						kinoteatr.New_name();
+						//запись обновленных данных в файл
+					}
+				}
 			}
 		}
 	} while (Menu.menu_number != 0);

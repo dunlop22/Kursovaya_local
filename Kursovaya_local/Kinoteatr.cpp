@@ -9,6 +9,7 @@ void Kinoteatr::New_name()
 {
 	do
 	{
+		system("cls");
 		cout << "Введите название кинотеатра:";
 		cin >> name;
 	} while (name == "");

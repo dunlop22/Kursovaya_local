@@ -20,7 +20,7 @@ public:
 		string name;	//название фильма
 		string age;		//возрастное ограничени
 		string duration;	//продолжительность фильма
-		string rejisser;//режиссеры
+		string rejisser;	//режиссеры
 		string short_description;	//краткое описание фильма
 		string main_role;	//главные роли
 		string price[9];	//стоимость билета
@@ -28,10 +28,11 @@ public:
 		string mesta[9];	//места в зале
 		string rand[9];
 	};
-	film filmi[10];
+	film filmi[10];	//массив информации о фильмах
+	string mesta;		//выкупленные  места
 
 
-	void New_name();	//Ввод название кинотеатра
+	void New_name();	//Ввод названия кинотеатра
 	void New_kassir();	//ввод ФИО кассира
 	string New_zal(int number_film, int number);		//генерация заполненности зала
 };
