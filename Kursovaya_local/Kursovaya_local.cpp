@@ -18,19 +18,40 @@ int main()
     File_O file_stream;
     Menu Menu;
 	Kinoteatr kinoteatr;
+	string error;
+	int temp;
+	/*
+	file_stream.path = "kino_v_teatre.txt\0";
+	file_stream.File_write(kinoteatr);
+	*/
     do
     {
         system("cls");
+		cout << error << "\n\n";
         Menu.File_choice(2);
+		start1:
+		file_stream.path = "kino_v_teatre.txt\0";
         Menu.Input_number();
 		if (Menu.menu_number == 2)	//ввод своего имени файла с кинотеатром
 		{
 			system("cls");
 			file_stream.File_input();
 		}
-
-		file_stream.path = "kino_v_teatre.txt\0";
-		if (file_stream.File_check())	//проверка на существование файла с таким названием
+		else if (Menu.menu_number == 3)
+		{
+			if (Menu.Input_password() == 1)
+			{
+				system("cls");
+				Menu.File_choice(1);
+				goto start1;
+			}
+		}
+		else if (Menu.menu_number == 4)
+		{
+			//создание нового файла под запрос, заполнение всех данных 
+		}
+		temp = file_stream.File_check();
+		if (temp == 1)	//проверка на существование файла с таким названием
 		{
 			if (file_stream.File_check_compound(&kinoteatr.kol_vo_filmov) == 1)		//проверка файла на внутренее форматирование
 			{
@@ -38,11 +59,19 @@ int main()
 				//cout << "Проверку прошел!";	//тест
 				file_stream.File_read(&kinoteatr);	//чтение фильмов в массивчик
 			}
+			else
+			{
+				error = "В файле \"" + file_stream.path + "\" имеются ошибки";
+			}
+		}
+		else if (temp == 2)
+		{
+			error = "Файл \"" + file_stream.path + "\" не был найден";
 		}
 		//_getch();	//тест
 		//cout << kinoteatr.filmi[0].name;
 		//_getch();
-	} while (file_stream.File_check() != 1);
+	} while (file_stream.File_check() == 2);
 
 	/// 
 	/// ДОБАВИТЬ ДЛЯ ВСЕХ РЕЖИМОВ ВОЗМОЖНОСТЬ СМЕНЫ ТЕКСТОВИКА С БАЗОЙ

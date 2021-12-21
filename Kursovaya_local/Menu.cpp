@@ -196,6 +196,7 @@ int Menu::Input_password()
 		cin >> password;
 		if (password == "test\0")
 		{
+			system("cls");
 			cout << "Вы вошли в режим администратора!\nДля продолжения нажмите любую клавишу";
 			_getch();
 			return 1;
@@ -234,16 +235,16 @@ void Menu::Edit_cinema()
 
 void Menu::File_choice(int k)
 {
-	cout << "1) Открыть файл по умолчанию в домашнем каталоге (\"kino_v_teatre\")\n2) Открыть файл по заданному пути";
+	cout << "1) Открыть файл по умолчанию в домашнем каталоге (\"kino_v_teatre\")\n2) Открыть файл по заданному пути\n3) Вход в режим администратора";
 	if (k == 1)
 	{
-		cout << "\n3)Создание нового файла\n\nESC - выход";
-		item_num = 3;
+		cout << "\n4) Создание нового файла\n\nESC - выход";
+		item_num = 4;
 	}
 	else
 	{
 		cout << "\n\nESC - выход";
-		item_num = 2;
+		item_num = 3;
 	}
 
 }
